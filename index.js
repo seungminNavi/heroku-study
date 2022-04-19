@@ -7,6 +7,7 @@ const pool = new Pool({
   connectionString: process.env.DATABASE_URL || 'postgresql://postgres:navi@localhost:5432/220419',
   ssl: process.env.DATABASE_URL ? true : false
 })
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
 
 express()
   .use(express.static(path.join(__dirname, 'public')))
