@@ -3,7 +3,12 @@ const express = require('express')
 const path = require('path')
 const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
+let devMode = process.env.NODE_ENV === 'development';
+if (devMode) {
+  dbConfig = dbConfig.development;
+}
 const pool = new Pool({
+  ...dbConfig,
   connectionString: process.env.DATABASE_URL || 'postgresql://postgres:navi@localhost:5432/220419',
   ssl: process.env.DATABASE_URL ? true : false
 })
