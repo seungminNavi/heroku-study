@@ -4,7 +4,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgres://bdrtvegwfbxxbu:e699367d65b4c11f2c23f67c2e2b8db3ab4f94c3d5c78457b5ca7a5c6bf9776a@ec2-3-225-213-67.compute-1.amazonaws.com:5432/df52bv7cckbefn',
+  connectionString: 'postgres://bdrtvegwfbxxbu:e699367d65b4c11f2c23f67c2e2b8db3ab4f94c3d5c78457b5ca7a5c6bf9776a@ec2-3-225-213-67.compute-1.amazonaws.com:5432/df52bv7cckbefn',
   ssl: process.env.DATABASE_URL ? true : false
 })
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
@@ -21,6 +21,7 @@ express()
       const client = await pool.connect();
       const result = await client.query('SELECT * FROM public.test_table');
       const results = { 'results' : (result) ? result.rows : null};
+      console.log(result, results);
       res.render('pages/db', results);
       client.release();
     } catch (err) {
