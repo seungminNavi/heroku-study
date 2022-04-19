@@ -4,7 +4,7 @@ const path = require('path')
 const PORT = process.env.PORT || 5000
 const { Pool } = require('pg');
 const pool = new Pool({
-  connectionString: process.env.DATABASE_URL || 'postgresql://postgres:navi@localhost:5432/220419',
+  connectionString: process.env.DATABASE_URL || 'postgres://rytjtogrquhfut:aa9572009642bb73e1319528333b0f40d6a9eaf5c3d01bb1b4eec58e06e7385a@ec2-3-225-213-67.compute-1.amazonaws.com:5432/d3838pbs34hbl7',
   ssl: process.env.DATABASE_URL ? true : false
 })
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
